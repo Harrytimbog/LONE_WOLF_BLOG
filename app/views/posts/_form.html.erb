@@ -1,19 +1,41 @@
 <%= simple_form_for(@post) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+  <div class="row">
+    <div class="col-xs-6">
+      <%= f.input :title, placeholder: "Title of you post" %>
+    </div>
+    <div class="col-xs-6">
+      <%= f.input :status, collection: Post::STATUSES, prompt: "Which status?" %>
+    </div>
+  </div>
+  <div class="form-group">
+    <input type="hidden" name="post[category_ids][]" value="">
+    <div class="category-choices">
+
+      <% Category.all.each do |category| %>
+
+        <input type="checkbox" class="hidden" value="<%= category.id  %>"
+        name="post[category_ids][]" id="post_category_ids_<%= category.id %>">
+
+        <label class="category-choice" for="post_category_ids_<%= category.id  %>">
+          <%= category.name %>
+          <i class="fa fa-check"></i>
+        </label>
+      <% end %>
+    </div>
+  </div>
 
   <div class="form-inputs">
-    <%= f.input :title %>
-    <%= f.input :status %>
      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>
 
   <div class="form-inputs">
-    <%= f.rich_text_area :rich_body %>
+    <%= f.rich_text_area :rich_body, placeholder: "Give us the full Gist" %>
   </div>
 
-
+  <br>
   <div class="form-actions">
-    <%= f.button :submit, class: "btn btn-primary" %>
+    <%= f.button :submit, "save your post", class: "btn btn-primary" %>
   </div>
 <% end %>
