@@ -1,16 +1,14 @@
 class ReviewsController < ApplicationController
-  def new
-    @review = Review.new
-  end
-
   def create
+    @post = Post.find(params[:post_id])
     @review = Review.new(review_params)
+    @review.post = @post
     @review.user = current_user
     if @review.save
-      redirect_to new_review_path
+      redirect_to post_path(@post)
     else
       flash[:alert] = "Something went wrong."
-      render :new
+      render "posts/show"
     end
   end
 
