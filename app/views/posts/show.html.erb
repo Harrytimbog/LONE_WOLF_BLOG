@@ -12,7 +12,7 @@
   </p>
 
   <% @post.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :quality=>"auto", :fetch_format=>:auto %>
   <% end %>
 
   <%= link_to 'Edit', edit_post_path(@post) %> |
