@@ -1,0 +1,11 @@
+<div class="main">
+  <br></br>
+  <br></br>
+  <div class="container">
+
+    <%= cl_image_tag current_user.avatar.key, width: 300, height: 250, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: "rounded-circle" %>
+    <h2>My name is <%= current_user.nickname %></h2>
+    <%= link_to 'Make changes to profile', edit_user_registration_path, class: "btn btn-outline-info" %>
+  </div>
+  <%= link_to "back", root_path %>
+</div>

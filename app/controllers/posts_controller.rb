@@ -46,6 +46,10 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: 'post was successfully destroyed.'
   end
 
+  def my_own
+    @my_posts = Post.where(owner_id: current_user.id)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
