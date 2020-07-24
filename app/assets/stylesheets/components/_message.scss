@@ -1,3 +1,14 @@
+.author {
+  span {
+    font-style: normal;
+    font-weight: bold;
+  }
+
+  small {
+    color: $gray-500;
+  }
+}
+
 #messages {
   font-size: 14px;
   color: #868686;
