@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root to: 'posts#index'
   get "posts/my_own", to: "posts#my_own", as: :my_own
   get 'user/dashboards#show', to: "user/dashboards#show", as: :my_profile
+  resources :chatrooms, only: :show do
+    resources :messages, only: :create
+  end
 
   resources :posts, except: :index do
     resources :reviews, only: [:new, :create]
