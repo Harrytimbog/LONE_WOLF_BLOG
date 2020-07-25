@@ -43,7 +43,11 @@
 
   <%= render "reviews/new", post: @post, review: @review %>
 
+<% if policy(post).edit? %>
   <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary" %> |
+<% end %>
+<% if policy(post).edit? %>
   <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> |
+<% end %>
   <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
 </div>

@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     if !cate.nil?
       @posts = Post.where(category_id: cate)
     else
-      @posts = Post.all.order(created_at: :desc)
+      @posts = policy_scope(post).order(created_at: :desc)
     end
   end
 
@@ -22,6 +22,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    authorize @post
   end
 
   # GET /posts/1/edit
@@ -32,6 +33,8 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.owner = current_user
+    authorize @post
+
     if @post.save
       redirect_to @post, notice: 'post was successfully created.'
     else
@@ -63,6 +66,7 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    authorize @post
   end
 
   # Only allow a trusted parameter "white list" through.

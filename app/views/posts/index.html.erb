@@ -38,5 +38,7 @@
   </div>
   <br>
 
-  <%= link_to 'New post', new_post_path %>
+  <% if policy(Post).create? %>
+    <%= link_to 'New post', new_post_path %>
+  <% end %>
 </div>
