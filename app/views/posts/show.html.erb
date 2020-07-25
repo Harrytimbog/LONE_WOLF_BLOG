@@ -1,9 +1,7 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
-  <p><%@post.categories.each do |category| %></p>
-   <h1>Category: <%= category.name %></h1>
-  <% end %>
+   <h3>Category: <%= @post.category.name %></h3>
   <p>
     <strong>Title:</strong>
     <%= @post.title %>
@@ -23,7 +21,7 @@
 
 
 
-  <h3>Reviews</h3>
+  <h4>Reviews</h4>
   <% if @post.reviews.empty? %>
     <p>Be the first to let a review</p>
   <% else %>
@@ -45,6 +43,7 @@
 
   <%= render "reviews/new", post: @post, review: @review %>
 
-  <%= link_to 'Edit', edit_post_path(@post) %> |
-  <%= link_to 'Back', root_path %>
+  <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary" %> |
+  <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> |
+  <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
 </div>

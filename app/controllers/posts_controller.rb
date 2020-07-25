@@ -3,7 +3,15 @@ class PostsController < ApplicationController
 
   # GET /posts
   def index
-    @posts = Post.all.order(created_at: :desc)
+    @categories = Category.all
+
+    cate = params[:cate]
+
+    if !cate.nil?
+      @posts = Post.where(category_id: cate)
+    else
+      @posts = Post.all.order(created_at: :desc)
+    end
   end
 
   # GET /posts/1
@@ -59,6 +67,6 @@ class PostsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def post_params
-    params.require(:post).permit(:title, :status, :rich_body, photos: [], category_ids: [])
+    params.require(:post).permit(:title, :status, :rich_body, :category_id, photos: [])
   end
 end

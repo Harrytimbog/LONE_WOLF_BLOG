@@ -5,7 +5,7 @@ class Post < ApplicationRecord
   has_rich_text :rich_body
   has_many :post_categories, dependent: :destroy
   has_many :reviews, dependent: :destroy
-  has_many :categories, through: :post_categories
+  belongs_to :category
 
   STATUSES = ["draft", "published"]
   validates :status, inclusion: {in: STATUSES}

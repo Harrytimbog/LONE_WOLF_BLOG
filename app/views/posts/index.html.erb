@@ -1,29 +1,42 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h1>Posts</h1>
+  <div class="row">
+    <div class="col-md-8">
+    <div class="row">
 
-<h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <% @posts.each do |post| %>
+        <div class="col-md-6">
+          <div class="card mt-3">
+            <div class="card-body">
+              <h4><%= link_to post.title, post_path(post.id) %></h4>
+              <%= link_to "View", post_path(post.id), class: "btn btn-primary"  %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    </div>
+    <div class="col-md-4">
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <div class="card mt-3">
+        <div class="card-header">
+          Categories
+        </div>
 
-<br>
+        <div class="card-body">
+          <%  @categories.each do |category| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= link_to category.name, posts_path(:cate => category.id)   %>
+            <span class="badge badge-primary badge-pill"> <%= category.posts.count %> </span>
+          </li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
 
-<%= link_to 'New post', new_post_path %>
+  <%= link_to 'New post', new_post_path %>
+</div>
