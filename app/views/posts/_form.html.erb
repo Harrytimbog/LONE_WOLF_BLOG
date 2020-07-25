@@ -26,6 +26,12 @@
     </div>
   </div>
 
+<!--
+  <div class="form-inputs">
+    <%= f.select :category_ids, Category.all.map {|c| c.name } %>
+  </div>
+!-->
+
   <div class="form-inputs">
      <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   </div>

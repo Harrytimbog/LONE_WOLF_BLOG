@@ -1,6 +1,9 @@
 <div class="container">
   <p id="notice"><%= notice %></p>
 
+  <p><%@post.categories.each do |category| %></p>
+   <h1>Category: <%= category.name %></h1>
+  <% end %>
   <p>
     <strong>Title:</strong>
     <%= @post.title %>
