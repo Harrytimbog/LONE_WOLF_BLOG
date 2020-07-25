@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     if !cate.nil?
       @posts = Post.where(category_id: cate)
     else
-      @posts = policy_scope(post).order(created_at: :desc)
+      @posts = policy_scope(Post).order(created_at: :desc)
     end
   end
 
