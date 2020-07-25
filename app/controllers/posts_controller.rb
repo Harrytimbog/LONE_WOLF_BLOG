@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     cate = params[:cate]
 
     if !cate.nil?
-      @posts = Post.where(category: cate)
+      @posts = Post.where(category_id: cate)
     else
       @posts = Post.all.order(created_at: :desc)
     end
