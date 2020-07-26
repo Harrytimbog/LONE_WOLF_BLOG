@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  skip_after_action :verify_policy_scoped, only: :my_posts
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -33,13 +34,13 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.owner = current_user
-    authorize @post
 
     if @post.save
       redirect_to @post, notice: 'post was successfully created.'
     else
       render :new
     end
+    authorize @post
   end
 
   # PATCH/PUT /posts/1
@@ -57,7 +58,7 @@ class PostsController < ApplicationController
     redirect_to root_path, notice: 'post was successfully destroyed.'
   end
 
-  def my_own
+  def my_posts
     @my_posts = Post.where(owner_id: current_user.id)
   end
 

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: 'posts#index'
-  get "posts/my_own", to: "posts#my_own", as: :my_own
+  get "posts/my_posts", to: "posts#my_posts", as: :my_posts
   get 'user/dashboards#show', to: "user/dashboards#show", as: :my_profile
   resources :categories
 

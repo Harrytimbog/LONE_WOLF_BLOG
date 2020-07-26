@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
       flash[:alert] = "Something went wrong."
       render "posts/show"
     end
+    authorize @review
   end
 
   private
