@@ -5,8 +5,12 @@ class PostPolicy < ApplicationPolicy
     end
   end
 
+  def index?
+    true # Anyone can view a post
+  end
+
   def show?
-    true # Anyone can view a restaurant
+    true # Anyone can view a post
   end
 
   def create?

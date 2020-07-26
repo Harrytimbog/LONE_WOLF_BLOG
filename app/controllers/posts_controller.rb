@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_after_action :verify_policy_scoped, only: :my_posts
+  skip_after_action :verify_policy_scoped, only: :index
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -13,6 +13,7 @@ class PostsController < ApplicationController
     else
       @posts = policy_scope(Post).order(created_at: :desc)
     end
+    authorize @posts
   end
 
   # GET /posts/1
