@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'user/dashboards#show', to: "user/dashboards#show", as: :my_profile
   resources :categories
 
-  resources :chatrooms, only: :show do
+  resources :chatrooms, only: [:index, :show] do
     resources :messages, only: :create
   end
 

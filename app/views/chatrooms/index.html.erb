@@ -1,0 +1,24 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+  <h1>Chatrooms</h1>
+  <div class="row">
+    <div class="col-md-12">
+    <div class="row">
+
+
+      <% @chatrooms.each do |chatroom| %>
+        <div class="col-md-6">
+          <div class="card mt-3">
+            <div class="card-body">
+              <h4><%= link_to chatroom.name, chatroom_path(chatroom.id) %></h4>
+              <%= link_to "View", chatroom_path(chatroom.id), class: "btn btn-primary"  %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    </div>
+<br>
+
+  </div>
+</div>
