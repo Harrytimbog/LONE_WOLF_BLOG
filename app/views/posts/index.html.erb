@@ -18,6 +18,7 @@
               </div>
 
               <%= link_to "View", post_path(post.id), class: "btn btn-primary"  %>
+              <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
             </div>
           </div>
         </div>

@@ -20,6 +20,10 @@
     <div class='badge badge-primary text-wrap'>
       <i><%=@post.status %> and created by <%=@post.owner.nickname %></i>
     </div>
+    <div class='m-3'>
+      <%= button_to 'Like', post_likes_path(@post), method: :post %>
+      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    </div>
   </div>
 
 
@@ -44,6 +48,7 @@
     </ul>
   <% end %>
 
+
   <%= render "reviews/new", post: @post, review: @review %>
 
 <div class='mt-2' ml-2>
@@ -56,3 +61,4 @@
     <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
   </div>
 </div>
+
