@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  skip_after_action :verify_policy_scoped, only: :index
+  skip_after_action :verify_policy_scoped, only: [:index, :my_posts]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -61,6 +61,7 @@ class PostsController < ApplicationController
 
   def my_posts
     @my_posts = Post.where(owner_id: current_user.id)
+    authorize @my_posts
   end
 
   private

@@ -10,7 +10,7 @@ class ChatroomPolicy < ApplicationPolicy
   end
 
   def show?
-    true # Anyone can view a restaurant
+    true # Anyone can view a chatroom
   end
 
   def create?
@@ -19,7 +19,7 @@ class ChatroomPolicy < ApplicationPolicy
 
   def update?
     user_is_adnin?
-    # - record: the restaurant passed to the `authorize` method in controller
+    # - record: the chatroom passed to the `authorize` method in controller
     # - user:   the `current_user` signed in with Devise.
   end
 

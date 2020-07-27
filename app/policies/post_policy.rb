@@ -17,6 +17,10 @@ class PostPolicy < ApplicationPolicy
     return true
   end
 
+  def my_posts?
+    true
+  end
+
   def edit?
     user_is_owner_or_admin?
   end

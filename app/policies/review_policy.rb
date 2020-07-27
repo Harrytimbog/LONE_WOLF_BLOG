@@ -6,7 +6,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def show?
-    true # Anyone can view a restaurant
+    true # Anyone can view a review
   end
 
   def create?
@@ -19,7 +19,7 @@ class ReviewPolicy < ApplicationPolicy
 
   def update?
     user_is_owner_or_admin?
-    # - record: the restaurant passed to the `authorize` method in controller
+    # - record: the review passed to the `authorize` method in controller
     # - user:   the `current_user` signed in with Devise.
   end
 
