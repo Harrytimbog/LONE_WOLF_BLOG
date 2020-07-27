@@ -16,9 +16,11 @@
     <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :quality=>"auto", :fetch_format=>:auto %>
   <% end %>
 
-  <p><%=@post.status %> and created by <%=@post.owner.nickname %></p>
-
-
+  <div class='text-right'>
+    <div class='badge badge-primary text-wrap'>
+      <i><%=@post.status %> and created by <%=@post.owner.nickname %></i>
+    </div>
+  </div>
 
 
   <h4>Reviews</h4>
@@ -43,7 +45,7 @@
 
   <%= render "reviews/new", post: @post, review: @review %>
 
-<div class='m-2'>
+<div class='mt-2' ml-2>
   <% if policy(@post).edit? %>
     <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary" %> |
   <% end %>

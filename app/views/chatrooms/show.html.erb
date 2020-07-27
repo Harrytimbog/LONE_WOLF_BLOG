@@ -16,10 +16,13 @@
 
         <div id="create-message">
           <%= simple_form_for [ @chatroom, @message ], remote: true do |f| %>
-            <%= f.input :content, label: false, placeholder: "Message ##{@chatroom.name}" %>
-            <%= f.submit %>
+            <%= f.input :content, label: false, placeholder: "type a message in ##{@chatroom.name} channel" %>
+            <div class = 'mt-3'>
+              <%= f.button :submit, 'Send Message', class: 'btn btn-secondary' %>
+            </div>
           <% end %>
         </div>
+        <%= link_to 'Back', chatrooms_path %>
     </div>
   </div>
 </div>

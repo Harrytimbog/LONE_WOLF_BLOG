@@ -21,7 +21,12 @@
         </ul>
     <% end %>
   </div>
-  <%= link_to "back", root_path %>
+  <div class='mt-2'>
+    <%= link_to "Make changes to your profile", edit_user_registration_path, class: 'btn btn-success' %>
+  </div>
+  <div class='mt-2'>
+    <%= link_to "back", root_path, class: 'btn btn-dark' %>
+  </div>
   <br>
   <br>
   <br>
