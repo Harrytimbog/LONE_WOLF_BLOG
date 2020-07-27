@@ -1,21 +1,36 @@
 class ReviewsController < ApplicationController
+  before_action :find_post
+
   def create
-    @post = Post.find(params[:post_id])
-    @review = Review.new(review_params)
-    @review.post = @post
-    @review.user = current_user
-    if @review.save
-      redirect_to post_path(@post)
+    if already_reviewed?
+      flash[:notice] = "You can't review more than once"
     else
-      flash[:alert] = "Something went wrong."
-      render "posts/show"
+      @post = Post.find(params[:post_id])
+      @review = Review.new(review_params)
+      @review.post = @post
+      @review.user = current_user
+      if @review.save
+        redirect_to post_path(@post)
+      else
+        flash[:alert] = "Something went wrong."
+        render "posts/show"
+      end
     end
-    authorize @review
   end
 
   private
 
   def review_params
     params.require(:review).permit(:content, :rating)
+  end
+
+  def find_post
+    @post = Post.find(params[:post_id])
+    authorize @post
+  end
+
+  def already_reviewed?
+    Review.where(user_id: current_user.id, post_id:
+    params[:post_id]).exists?
   end
 end
