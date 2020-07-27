@@ -9,6 +9,7 @@ class LikesController < ApplicationController
       @post.likes.create(user_id: current_user.id)
     end
     redirect_to post_path(@post)
+    authorize @post
   end
 
   def destroy
@@ -24,11 +25,11 @@ class LikesController < ApplicationController
 
   def find_post
     @post = Post.find(params[:post_id])
-    authorize @post
   end
 
   def find_like
     @like = @post.likes.find(params[:id])
+    authorize @like
   end
 
   def already_liked?
