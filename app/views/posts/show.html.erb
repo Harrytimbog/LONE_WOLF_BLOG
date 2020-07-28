@@ -28,7 +28,7 @@
       <% else %>
         <%= button_to 'Like', post_likes_path(@post), method: :post %>
       <% end %>
-      <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+      <p><%= pluralize @post.likes.size, "Like" %></p>
     <% end %>
     </div>
   </div>
