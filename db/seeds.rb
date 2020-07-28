@@ -11,7 +11,7 @@ Category.destroy_all if Rails.env.development?
 puts "DB restored"
 puts "creating categories"
 
-categories = %w[Romance Comedy Lifestyle Education Entertainment Event Travel Health NYSC Politics Movies Agriculture Sexcapade Culture]
+categories = %w[Romance Comedy Lifestyle Education Entertainment Event Travel Health NYSC Politics Movies Agriculture Sexcapade Culture KWASU]
 categories.each do |category|
   Category.create!(name: category)
 end

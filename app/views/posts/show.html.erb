@@ -33,27 +33,29 @@
 
 
   <h4>Reviews</h4>
-  <% pre_review = @post.reviews.find { |review| review.user_id == current_user.id} %>
-  <% if @post.reviews.empty? %>
-    <p>Be the first to let a review</p>
-  <% else %>
-    <ul class="list-group">
-      <% @post.reviews.each do |review| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
-          <span class="badge badge-primary badge-pill">
-            <% counter = 0 %>
-            <% 5.times do %>
-              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-              <% counter += 1 %>
-            <% end %>
-          </span>
-          <%= review.content %>
-        </li>
-        <i>by <%= review.user.nickname  %></i>
+  <% unless !user_signed_in? %>
+    <% pre_review = @post.reviews.find { |review| review.user_id == current_user.id} %>
+    <% if @post.reviews.empty? %>
+      <p>Be the first to let a review</p>
+    <% else %>
+      <ul class="list-group">
+        <% @post.reviews.each do |review| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
+            <span class="badge badge-primary badge-pill">
+              <% counter = 0 %>
+              <% 5.times do %>
+                <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+                <% counter += 1 %>
+              <% end %>
+            </span>
+            <%= review.content %>
+          </li>
+          <i>by <%= review.user.nickname  %></i>
+        <% end %>
+      </ul>
+      <% if pre_review %>
+        <%= button_to 'Delete Review', post_review_path(@post, pre_review), method: :delete %>
       <% end %>
-    </ul>
-    <% if pre_review %>
-      <%= button_to 'Delete Review', post_review_path(@post, pre_review), method: :delete %>
     <% end %>
   <% end %>
 
@@ -64,11 +66,13 @@
   <%= render "reviews/new", post: @post, review: @review %>
 
 <div class='mt-2 mb-2'>
-  <% if policy(@post).edit? %>
-    <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary" %> |
-  <% end %>
-  <% if policy(@post).destroy? %>
-    <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> |
+  <% if current_user.try(:admin?) %>
+    <% if policy(@post).edit? %>
+      <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary" %> |
+    <% end %>
+    <% if policy(@post).destroy? %>
+      <%= link_to 'Delete', post_path(@post), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %> |
+    <% end %>
   <% end %>
     <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
   </div>

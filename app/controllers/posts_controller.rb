@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  skip_after_action :verify_policy_scoped, only: [:index, :my_posts]
+  before_action :authenticate_user!, only: [:new, :create]
+  skip_after_action :verify_policy_scoped, only: [:index, :show]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
