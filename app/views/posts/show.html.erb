@@ -11,9 +11,8 @@
     <strong>Body:</strong>
     <%= @post.rich_body %>
   </p>
-
   <% @post.photos.each do |photo| %>
-    <%= cl_image_tag photo.key, height: 300, width: 400, crop: :fill, :quality=>"auto", :fetch_format=>:auto %>
+    <%= cl_image_tag photo.key, height: 300, width: 350, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: 'm-1 text-center' %>
   <% end %>
 
   <div class='text-right'>
