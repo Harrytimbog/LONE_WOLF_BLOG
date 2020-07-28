@@ -21,6 +21,10 @@ class PostPolicy < ApplicationPolicy
     user_is_owner_or_admin?
   end
 
+  def my_posts?
+    true
+  end
+
   def update?
     user_is_owner_or_admin?
     # - record: the restaurant passed to the `authorize` method in controller
