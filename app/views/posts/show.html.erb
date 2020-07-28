@@ -21,6 +21,7 @@
       <i><%=@post.status %> and created by <%=@post.owner.nickname %></i>
     </div>
     <div class='m-3'>
+    <% unless !user_signed_in? %>
       <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
       <% if pre_like %>
         <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
@@ -28,6 +29,7 @@
         <%= button_to 'Like', post_likes_path(@post), method: :post %>
       <% end %>
       <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+    <% end %>
     </div>
   </div>
 

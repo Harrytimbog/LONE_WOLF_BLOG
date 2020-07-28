@@ -24,7 +24,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def destroy?
-    user_is_owner_or_admin?
+    true
   end
 
   private

@@ -17,6 +17,7 @@ class ReviewsController < ApplicationController
         render "posts/show"
       end
     end
+    authorize @post
   end
 
   def destroy
@@ -36,7 +37,6 @@ class ReviewsController < ApplicationController
 
   def find_post
     @post = Post.find(params[:post_id])
-    authorize @post
   end
 
   def find_review
