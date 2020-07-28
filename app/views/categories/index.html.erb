@@ -21,9 +21,10 @@
 <br>
 
   </div>
-  <div class='m-3'>
+  <div class='mt-3 mb-3'>
     <% if policy(Category).create? %>
-      <%= link_to 'New Category', new_category_path, class: 'btn btn-info' %>
+      <%= link_to 'New Category', new_category_path, class: 'btn btn-info' %> |
+      <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
     <% end %>
   </div>
 </div>
