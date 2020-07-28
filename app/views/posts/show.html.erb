@@ -33,6 +33,7 @@
 
 
   <h4>Reviews</h4>
+  <% pre_review = @post.reviews.find { |review| review.user_id == current_user.id} %>
   <% if @post.reviews.empty? %>
     <p>Be the first to let a review</p>
   <% else %>
@@ -51,7 +52,13 @@
         <i>by <%= review.user.nickname  %></i>
       <% end %>
     </ul>
+    <% if pre_review %>
+      <%= button_to 'Delete Review', post_review_path(@post, pre_review), method: :delete %>
+    <% end %>
   <% end %>
+
+  <p><%= @post.reviews.count %> <%= (@post.reviews.count) == 1 ? 'Review' : 'Reviews'%></p>
+
 
 
   <%= render "reviews/new", post: @post, review: @review %>
@@ -66,4 +73,3 @@
     <%= link_to 'Back', root_path, class: 'btn btn-secondary' %>
   </div>
 </div>
-

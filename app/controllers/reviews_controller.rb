@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :find_post
+  before_action :find_review, only: [:destroy]
 
   def create
     if already_reviewed?
@@ -18,6 +19,15 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    if !already_reviewed?
+      flash[:notice] = "Cannot unreview"
+    else
+      @review.destroy
+    end
+    redirect_to post_path(@post)
+  end
+
   private
 
   def review_params
@@ -27,6 +37,11 @@ class ReviewsController < ApplicationController
   def find_post
     @post = Post.find(params[:post_id])
     authorize @post
+  end
+
+  def find_review
+    @review = @post.reviews.find(params[:id])
+    authorize @review
   end
 
   def already_reviewed?
