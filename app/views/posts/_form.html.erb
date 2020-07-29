@@ -7,10 +7,12 @@
         <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
         <div class="row">
           <div class="col-xs-6 mr-5">
-            <%= f.input :title, placeholder: "Title of you post" %>
+            <h3><%= f.input :title, placeholder: "Title of you post" %></h3>
           </div>
           <div class="col-xs-6">
-            <%= f.input :status, collection: Post::STATUSES, prompt: "Which status?" %>
+            <h3>
+              <%= f.input :status, collection: Post::STATUSES, prompt: "Which status?" %>
+            </h3>
           </div>
         </div>
         <div class="form-group">
@@ -23,7 +25,9 @@
               name="post[category_id]" id="post_category_id_<%= category.id %>">
 
               <label class="category-choice" for="post_category_id_<%= category.id  %>">
-                <%= category.name %>
+                <p>
+                  <%= category.name %>
+                </p>
                 <i class="fa fa-check"></i>
               </label>
             <% end %>
@@ -37,7 +41,9 @@
       !-->
 
         <div class="form-inputs">
-           <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          <h3>
+             <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+          </h3>
         </div>
 
         <div class="form-inputs">
