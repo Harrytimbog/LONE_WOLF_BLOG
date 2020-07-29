@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :reviews
   has_one_attached :avatar
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :nickname, uniqueness: true
 
   # Include default devise modules. Others available are:

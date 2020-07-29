@@ -20,6 +20,7 @@ class PostsController < ApplicationController
   # GET /posts/1
   def show
     @review = Review.new
+    @comment = Comment.new
   end
 
   # GET /posts/new

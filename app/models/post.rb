@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :reviews, dependent: :destroy
   belongs_to :category
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   STATUSES = ["drafted", "completed"]
   validates :status, inclusion: {in: STATUSES}

@@ -28,16 +28,48 @@
         <%= button_to 'Like', post_likes_path(@post), method: :post %>
       <% end %>
       <p><%= pluralize @post.likes.size, "Like" %></p>
+    <% else %>
+      <p><%= pluralize @post.likes.size, "Like" %></p>
     <% end %>
     </div>
   </div>
 
+  <h4>Comments</h4>
+  <% unless !user_signed_in? %>
+    <% pre_comment = @post.comments.find { |comment| comment.user_id == current_user.id} %>
+    <% if @post.comments.empty? %>
+      <p>Be the first to add a comment</p>
+    <% else %>
+      <ul class="list-group">
+        <% @post.comments.each do |comment| %>
+          <li class="list-group-item d-flex align-items-center mt-2">
+            <p id="comment-<%= comment.id %>"><%= comment.content %></p>
+          </li>
+          <small>by <%= comment.user.nickname  %></small>
+        <% end %>
+      </ul>
+      <% if pre_comment %>
+        <%= button_to 'Delete Comment', post_comment_path(@post, pre_comment), method: :delete, remote: true %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <ul class="list-group">
+      <% @post.comments.each do |comment| %>
+        <li class="list-group-item d-flex align-items-center mt-2">
+          <p id="comment-<%= comment.id %>"><%= comment.content %></p>
+        </li>
+        <small>by <%= comment.user.nickname  %></small>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= render "comments/new", post: @post, comment: @comment %>
 
   <h4>Reviews</h4>
   <% unless !user_signed_in? %>
     <% pre_review = @post.reviews.find { |review| review.user_id == current_user.id} %>
     <% if @post.reviews.empty? %>
-      <p>Be the first to let a review</p>
+      <p>Be the first to add a review</p>
     <% else %>
       <ul class="list-group">
         <% @post.reviews.each do |review| %>
@@ -58,6 +90,22 @@
         <%= button_to 'Delete Review', post_review_path(@post, pre_review), method: :delete, remote: true %>
       <% end %>
     <% end %>
+  <% else %>
+    <ul class="list-group">
+      <% @post.reviews.each do |review| %>
+        <li class="list-group-item d-flex justify-content-between align-items-center mt-2">
+          <span class="badge badge-primary badge-pill">
+            <% counter = 0 %>
+            <% 5.times do %>
+              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+              <% counter += 1 %>
+            <% end %>
+          </span>
+          <p id="review-<%= review.id %>"><%= review.content %></p>
+        </li>
+        <small>by <%= review.user.nickname  %></small>
+      <% end %>
+    </ul>
   <% end %>
 
   <small> <%= pluralize @post.reviews.size, "Review" %></small>
