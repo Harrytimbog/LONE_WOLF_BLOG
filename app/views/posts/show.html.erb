@@ -17,7 +17,7 @@
 
   <div class='text-right'>
     <div class='badge badge-primary text-wrap'>
-      <i><%=@post.status %> and created by <%=@post.owner.nickname %></i>
+      <i><%=@post.status %> and created by <%=@post.owner.nickname %> on <%= @post.owner.created_at.strftime("%a %b %e at %l:%M%p") %> </i>
     </div>
     <div class='m-3'>
     <% unless !user_signed_in? %>
@@ -49,25 +49,23 @@
                 <% counter += 1 %>
               <% end %>
             </span>
-            <%= review.content %>
+            <p id="review-<%= review.id %>"><%= review.content %></p>
           </li>
-          <i>by <%= review.user.nickname  %></i>
+          <small>by <%= review.user.nickname  %></small>
         <% end %>
       </ul>
       <% if pre_review %>
-        <%= button_to 'Delete Review', post_review_path(@post, pre_review), method: :delete %>
+        <%= button_to 'Delete Review', post_review_path(@post, pre_review), method: :delete, remote: true %>
       <% end %>
     <% end %>
   <% end %>
 
-  <p><%= @post.reviews.count %> <%= (@post.reviews.count) == 1 ? 'Review' : 'Reviews'%></p>
-
-
+  <small> <%= pluralize @post.reviews.size, "Review" %></small>
 
   <%= render "reviews/new", post: @post, review: @review %>
 
 <div class='mt-2 mb-2'>
-  <% if current_user.try(:admin?) %>
+  <% if current_user.try(:admin?) || current_user == @post.owner %>
     <% if policy(@post).edit? %>
       <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-outline-primary" %> |
     <% end %>

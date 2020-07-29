@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       @review.post = @post
       @review.user = current_user
       if @review.save
-        redirect_to post_path(@post)
+        redirect_to post_path(@post, anchor: "review-#{@review.id}")
       else
         flash[:alert] = "Something went wrong."
         render "posts/show"

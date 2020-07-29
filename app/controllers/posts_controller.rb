@@ -58,6 +58,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to root_path, notice: 'post was successfully destroyed.'
+    authorize @post
   end
 
   def my_posts

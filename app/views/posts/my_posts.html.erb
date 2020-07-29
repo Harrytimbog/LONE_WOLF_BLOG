@@ -3,6 +3,11 @@
 
       <%= cl_image_tag @current_user.avatar.key, width: 300, height: 250, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: "rounded-circle" %>
     <h3>Hi <%= current_user.nickname %></h3>
+    <div class='text-right'>
+      <div class='badge badge-primary text-wrap'>
+        <i>You Joined this Platform on <%= current_user.created_at.strftime("%a %b %e at %l:%M%p") %></i>
+      </div>
+    </div>
     <% if @my_posts.empty? %>
       <p>You haven't created any post yet.................</p>
     <% else %>
