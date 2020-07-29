@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "Destroying all categories and their dilemmas"
+puts "Destroying all categories"
 Category.destroy_all if Rails.env.development?
 
 puts "DB restored"
