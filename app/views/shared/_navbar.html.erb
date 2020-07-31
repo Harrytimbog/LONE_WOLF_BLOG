@@ -11,6 +11,11 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
+        <% if current_user.try(:admin?) %>
+          <li class="nav-item mr-2">
+            <%= link_to "Admin Dashboard", rails_admin_path, class: "nav-link btn btn-outline-info" %>
+          </li>
+        <% end %>
         <li class="nav-item mr-2">
           <%= link_to "Messages", chatrooms_path, class: "nav-link btn btn-outline-primary" %>
         </li>
