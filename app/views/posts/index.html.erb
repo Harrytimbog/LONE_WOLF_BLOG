@@ -2,6 +2,24 @@
   <p id="notice"><%= notice %></p>
   <h1>Posts</h1>
   <div class="row">
+    <div class="col-md-4">
+
+      <div class="card mt-3">
+        <div class="card-header">
+          <h3> <%= link_to 'CATEGORIES', categories_path, class: 'btn btn-outline-primary' %></h3>
+        </div>
+
+        <div class="card-body">
+          <%  @categories.each do |category| %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <%= link_to category.name, posts_path(cate: category.id)   %>
+            <span class="badge badge-primary badge-pill"> <%= category.posts.count %> </span>
+          </li>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
     <div class="col-md-8">
     <div class="row">
 
@@ -26,23 +44,6 @@
         </div>
       <% end %>
     </div>
-    </div>
-    <div class="col-md-4">
-
-      <div class="card mt-3">
-        <div class="card-header">
-          <h3> <%= link_to 'CATEGORIES', categories_path, class: 'btn btn-outline-primary' %></h3>
-        </div>
-
-        <div class="card-body">
-          <%  @categories.each do |category| %>
-          <li class="list-group-item d-flex justify-content-between align-items-center">
-            <%= link_to category.name, posts_path(cate: category.id)   %>
-            <span class="badge badge-primary badge-pill"> <%= category.posts.count %> </span>
-          </li>
-          <% end %>
-        </div>
-      </div>
     </div>
   </div>
   <br>
