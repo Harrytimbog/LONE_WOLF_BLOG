@@ -11,6 +11,8 @@ class PostsController < ApplicationController
 
     if !cate.nil?
       @posts = Post.where(category_id: cate)
+    elsif params[:query].present?
+      @posts = Post.where("title ILIKE ?", "%#{params[:query]}%")
     else
       @posts = policy_scope(Post).order(created_at: :desc)
     end
