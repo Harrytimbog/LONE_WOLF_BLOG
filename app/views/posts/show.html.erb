@@ -1,3 +1,7 @@
+<% content_for :meta_title, "#{@post.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @post.rich_body %>
+<% content_for :meta_image, cl_image_path(@post.photo.key) %>
+
 <div class="container">
   <p id="notice"><%= notice %></p>
 

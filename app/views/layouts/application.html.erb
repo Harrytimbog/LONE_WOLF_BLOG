@@ -2,7 +2,24 @@
 <html>
   <head>
     <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAqLj7/JCg//xYeJ/8lGyn/GhIf/x0VIv8mHCz/JBoq/yIYLf8bFCH/Ew0X/xoTIP8QGBr/Dh4a/wYXEv8GCw//KC09/x4jMv8iKjT/Jx0t/xwUIv8lGyv/KyAz/ykeMv8rHkT/JBsr/xcQHP8aEyD/Fh8f/x45Lv8MIRn/Dicg/yIrK/8ZKRj/KzA6/ywkNP8iGSr/LiM2/zMnO/8vIj//MiRV/ysgMf8gFyX/IRgn/xEXG/8IFhT/DCAe/w4cK/8TJyP/Fysp/yIvM/8xKzr/MCU4/zcqP/88LkX/OShT/zwlcP8yJTj/LyM1/yYcLP8ZIyL/IjMq/wgWF/8TJy7/IDk0/yQ8O/8OJCD/Mi06/zotQ/9AMkn/RDVO/0Esav88I3j/NSg6/zgqQP8tIjT/Gigk/x42Lf8OJx7/DCEe/xczLv8vRUD/Izo0/0k9TP9IOFH/SDhQ/0o5U/9HK4L/OSB2/zMmPv88LkP/OSw//xo0Lf8LHRv/JUI0/x8zOv8zSEP/RVBO/xs0Mv89TFD/dGF4/1xIYf9UQV//Nh9w/yMUUf8uIjr/RTdK/zc1Qv8WNC3/IUg3/xAuLP8mPDz/NkVD/0VbVv8aLCv/QU9K/yU/NP9OUVf/a1KC/zcqZv8fITj/IyM3/xclK/8RISX/FCso/wwcHP8YPjX/ETAn/yA8OP8yWEz/JUQ7/ypIO/8nQDX/N1ZI/0FMVP9DSnP/TlV5/yo7S/8SKyn/Hzsw/xg9Lf8eOS//Cxwc/w4tKP8eNTL/L1RN/yFDN/82Xk//RGlb/zVeT/8mNzn/Rk14/0JMe/8eKDz/IEA3/wgPFP8THCf/FzMn/xYwK/8VKib/LUNA/zhiVf8hQDP/H0M3/0BqWf9NdmL/LERK/1ZZcf9BRWH/GyIt/yRMP/8kPzT/ESQg/xkzJ/8TKCP/IkY2/xs/Nv8sW0z/GDIr/w8rJP8pU0P/S4Rv/zNtXv98fpz/ZGqS/xYiMP8eOzj/JEo6/xU4Mv8LKCP/ESwq/wkgGf8sRz3/LlhI/xcwK/8SLyb/Ol9S/zViUP8iRTr/fn2I/1VVaP8RHiH/BhMT/yJJP/8kQjj/ChcV/xY1Lv8OJB3/MU1F/zNfUP8QLSr/Fi4o/zRRQ/8oUEb/N1VH/0ZcUv8vNTv/Gy8t/w4dJP8gICT/UFVa/xw9Mv9GcWr/CBcX/x9FOv8qVkX/HUE2/w8pIP8ZPC7/Hk8+/x48Lv88YVD/MFJM/xUzNP8hM0H/EBsn/09SXf8OJSH/PWVh/wMUEf8XOzH/IEQ3/xI6Lf8eQTX/KEs7/yxYSf8gQjX/Gjgu/0NoXf8nUEn/HjI7/xIgJ/8TLCT/DB0a/wUREv8DEg//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==" rel="icon" type="image/x-icon" />
-    <title>LONEWolfBlog</title>
+    <title><%= meta_title %></title>
+    <meta name="description" content="<%= meta_description %>">
+
+    <!-- Facebook Open Graph data -->
+    <meta property="og:title" content="<%= meta_title %>" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="<%= request.original_url %>" />
+    <meta property="og:image" content="<%= meta_image %>" />
+    <meta property="og:description" content="<%= meta_description %>" />
+    <meta property="og:site_name" content="<%= meta_title %>" />
+
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:title" content="<%= meta_title %>">
+    <meta name="twitter:description" content="<%= meta_description %>">
+    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
+    <meta name="twitter:image:src" content="<%= meta_image %>">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
