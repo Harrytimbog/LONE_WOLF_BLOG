@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     @post.owner = current_user
 
     if @post.save
-      redirect_to @post, notice: 'post was successfully created.'
+      redirect_to post_path(@post), notice: 'post was successfully created.'
     else
       render :new
     end
