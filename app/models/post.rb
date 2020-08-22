@@ -13,6 +13,4 @@ class Post < ApplicationRecord
   STATUSES = ["drafted", "completed"]
   validates :status, inclusion: {in: STATUSES}
 
-  include PgSearch::Model
-  multisearchable against: [:title, :user]
 end
