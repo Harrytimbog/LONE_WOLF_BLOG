@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :owned_posts, foreign_key: :owner_id, class_name: "Post", dependent: :destroy
-  has_many :reviews
+  has_many :reviews, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_one_attached :avatar
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy

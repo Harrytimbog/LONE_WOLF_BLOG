@@ -1,3 +1,8 @@
+<% content_for :meta_title, "#{@post.title} is on #{DEFAULT_META["meta_product_name"]}" %>
+<% content_for :meta_description, @post.rich_body %>
+
+<!--POST DETAILS!-->
+
 <div class="container">
   <p id="notice"><%= notice %></p>
 
@@ -34,6 +39,9 @@
     </div>
   </div>
 
+
+  <!--POST COMMENTS!-->
+
   <h4>Comments</h4>
   <% unless !user_signed_in? %>
     <% pre_comment = @post.comments.find { |comment| comment.user_id == current_user.id} %>
@@ -64,6 +72,10 @@
   <% end %>
 
   <%= render "comments/new", post: @post, comment: @comment %>
+
+
+  <!--POST REVIEWS!-->
+
 
   <h4>Reviews</h4>
   <% unless !user_signed_in? %>

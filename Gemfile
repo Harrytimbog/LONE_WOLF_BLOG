@@ -8,6 +8,8 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'rails_admin', '~> 2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg_search', '~> 2.3.0'
+gem 'searchkick', '~> 3.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
