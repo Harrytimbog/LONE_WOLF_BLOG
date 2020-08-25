@@ -24,7 +24,7 @@ end
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :rating)
+    params.require(:comment).permit(:content)
   end
 
   def find_post
