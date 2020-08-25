@@ -1,7 +1,9 @@
 <div class="main m-4">
   <div class="container">
-
+    <% if current_user.avatar.attached? %>
       <%= cl_image_tag @current_user.avatar.key, width: 300, height: 250, crop: :fill, :quality=>"auto", :fetch_format=>:auto, class: "rounded-circle" %>
+    <% end %>
+
     <h3>Hi <%= current_user.nickname %></h3>
     <div class='text-right'>
       <div class='badge badge-primary text-wrap'>

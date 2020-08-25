@@ -36,6 +36,10 @@
                   <div>
                     <%= cl_image_tag post.owner.avatar.key, class: "avatar" %>
                   </div>
+                <% else %>
+                  <i>
+                    By <%= post.owner.nickname  %>
+                  </i>
                 <% end %>
               </div>
 
