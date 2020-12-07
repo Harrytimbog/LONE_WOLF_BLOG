@@ -122,6 +122,7 @@ ActiveRecord::Schema.define(version: 2020_10_03_225738) do
     t.boolean "admin", default: false
     t.string "provider"
     t.string "uid"
+    t.string "picture_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

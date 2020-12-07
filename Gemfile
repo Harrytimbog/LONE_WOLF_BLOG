@@ -34,6 +34,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pundit'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'omniauth-github'
 
 gem 'autoprefixer-rails'
 gem 'font-awesome-sass'
