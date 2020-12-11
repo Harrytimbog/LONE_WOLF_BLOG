@@ -53,6 +53,7 @@ class PostsController < ApplicationController
     else
       render :edit
     end
+    authorize @post
   end
 
   # DELETE /posts/1

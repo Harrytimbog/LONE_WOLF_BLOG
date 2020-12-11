@@ -37,14 +37,17 @@
                     <%= cl_image_tag post.owner.avatar.key, class: "avatar" %>
                   </div>
                 <% else %>
-                  <i>
-                    By <%= post.owner.nickname  %>
-                  </i>
+                    <% avatar_url = current_user.picture_url %>
+                    <%= image_tag avatar_url, class: "avatar" %>
+
                 <% end %>
               </div>
 
               <%= link_to "View", post_path(post.id), class: "btn btn-primary"  %>
               <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+              <i>
+                By <%= post.owner.nickname  %>
+              </i>
             </div>
           </div>
         </div>
