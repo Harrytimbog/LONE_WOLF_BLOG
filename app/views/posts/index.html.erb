@@ -37,9 +37,7 @@
                     <%= cl_image_tag post.owner.avatar.key, class: "avatar" %>
                   </div>
                 <% else %>
-                    <% avatar_url = current_user.picture_url %>
-                    <%= image_tag avatar_url, class: "avatar" %>
-
+                    <%= current_user.username %>
                 <% end %>
               </div>
 
