@@ -5,13 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
 puts "Destroying all categories"
 Category.destroy_all if Rails.env.development?
 
 puts "DB restored"
+
+puts "Creating Fake users"
+
+5.times do
+  user = User.new(
+    email: Faker::Internet.email,
+    nickname: Faker::Military.army_rank,
+    password: "123456"
+  )
+  user.save!
+end
+
+puts "Finished creating fake users"
+
 puts "creating categories"
 
-categories = %w[Romance Comedy Lifestyle Education Entertainment Event Travel Health NYSC Politics Movies Agriculture Sexcapade Culture KWASU]
+categories = %w[Investment Trading Moneytips]
 categories.each do |category|
   Category.create!(name: category)
 end

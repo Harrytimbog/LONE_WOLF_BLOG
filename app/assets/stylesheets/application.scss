@@ -17,6 +17,14 @@
 // Js Plugins
 @import "jquery-bar-rating/dist/themes/css-stars";
 
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    margin: 0 0 100px; /* bottom = footer height */
+}
+
 
 h1 {
   color: #111d5e;

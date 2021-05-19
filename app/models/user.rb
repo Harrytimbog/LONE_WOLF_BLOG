@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  validates :nickname, uniqueness: true
+  validates :nickname, uniqueness: true, presence: true
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
