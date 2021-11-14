@@ -1,7 +1,7 @@
 ## LONE_WOLF_BLOG
 A basic blog built with Postgres, Ruby on Rails.
 
-## API Documentation    
+## Documentation    
 
 ## Demo    
 
