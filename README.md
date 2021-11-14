@@ -1,13 +1,13 @@
 ## LONE_WOLF_BLOG
 A basic blog built with Postgres, Ruby on Rails.
 
-## API Documentation    return
+## API Documentation    
 
-## Demo    return
+## Demo    
 
 [Run demo](https://clone-wolf-blog.herokuapp.com/)
 
-## Run Locally   return
+## Run Locally   
 
 Clone the project
 
@@ -39,7 +39,7 @@ Start Server
 rails s
 ```
 
-## Feedback  return
+## Feedback   
 
 Arigbede Timilehin Emmanuel - @Harrytimbog - harriemannie@gmail.com
 
