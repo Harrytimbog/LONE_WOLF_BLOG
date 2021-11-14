@@ -33,6 +33,13 @@ Install gems
 bundle install
 ```
 
+Create, Migrate and Seed Database
+
+``` console
+rails db:create db:migrate db:seed
+```
+
+
 Start Server
 
 ``` console
